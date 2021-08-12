@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CubaProjectState">
+    <option name="hasState" value="true" />
+    <option name="cubaModelState">
+      <CubaModelState>
+        <option name="repositories">
+          <list>
+            <RepositoryModelState>
+              <option name="url" value="https://repo.cuba-platform.com/content/groups/work" />
+              <option name="user" value="cuba" />
+              <option name="pass" value="3r6+CXYTcUs=" />
+              <option name="stateVersion" value="2" />
+            </RepositoryModelState>
+          </list>
+        </option>
+        <option name="appComponents">
+          <list>
+            <DependencyModelState>
+              <option name="group" value="com.haulmont.cuba" />
+              <option name="name" value="cuba-global" />
+              <option name="version" value="7.2.15" />
+            </DependencyModelState>
+          </list>
+        </option>
+        <option name="artifactGroup" value="com.company.pizza" />
+        <option name="artifactVersion" value="0.1" />
+        <option name="artifactSnapshot" value="true" />
+        <option name="tomcatDir" value="D:\Projects\pizza/deploy/tomcat" />
+        <option name="gradleVersion" value="5.6.4" />
+        <option name="gradlePluginJarPath" value="C:\Users\Denis\.gradle\caches\modules-2\files-2.1\com.haulmont.gradle\cuba-plugin\7.2.15\df2b6055e55f5f93f619605bd9fb540bd8f69e7c\cuba-plugin-7.2.15.jar" />
+      </CubaModelState>
+    </option>
+    <option name="dbArtifacts">
+      <map>
+        <entry key="com.haulmont.cuba" value="C:\Users\Denis\.gradle\caches\modules-2\files-2.1\com.haulmont.cuba\cuba-core\7.2.15\9a299e79c204522522cfdeee7c65c2b34a073d29\cuba-core-7.2.15-db.zip" />
+      </map>
+    </option>
+    <option name="gradleFilesCRC" value="5715138487" />
+  </component>
+</project>
