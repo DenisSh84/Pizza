@@ -88,7 +88,6 @@ create table PIZZA_TOPPING (
     --
     NAME varchar(80) not null,
     SPICY boolean,
-    INGREDIENT_ID uuid,
     --
     primary key (ID)
 )^
