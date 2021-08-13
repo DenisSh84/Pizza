@@ -1,15 +1,15 @@
 package com.company.pizza.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
-import com.haulmont.cuba.core.app.dynamicattributes.PropertyType;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Table(name = "PIZZA_PIZZA")
 @Entity(name = "pizza_Pizza")
@@ -21,9 +21,9 @@ public class Pizza extends StandardEntity {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @NotNull
     @Column(name = "SIZE_", nullable = false)
-    private String size;
+    @NotNull
+    private Integer size;
 
     @Column(name = "CALORIES")
     @Min(0)
@@ -37,6 +37,27 @@ public class Pizza extends StandardEntity {
     @Lob
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "pizza")
+    private List<OrderItem> orderItems;
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public void setSize(Size size) {
+        this.size = size == null ? null : size.getId();
+    }
+
+    public Size getSize() {
+        return size == null ? null : Size.fromId(size);
+    }
 
     public String getDescription() {
         return description;
@@ -60,14 +81,6 @@ public class Pizza extends StandardEntity {
 
     public void setCalories(Integer calories) {
         this.calories = calories;
-    }
-
-    public PropertyType getSize() {
-        return size == null ? null : PropertyType.fromId(size);
-    }
-
-    public void setSize(PropertyType size) {
-        this.size = size == null ? null : size.getId();
     }
 
     public String getName() {

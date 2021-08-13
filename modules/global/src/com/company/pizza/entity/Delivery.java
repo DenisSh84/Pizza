@@ -37,16 +37,6 @@ public class Delivery extends StandardEntity {
     @Lob
     @Column(name = "COMMENT_")
     private String comment;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "deliver")
-    private Order order;
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 
     public String getComment() {
         return comment;

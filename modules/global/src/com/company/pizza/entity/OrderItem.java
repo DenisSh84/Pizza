@@ -1,6 +1,8 @@
 package com.company.pizza.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -16,9 +18,9 @@ public class OrderItem extends StandardEntity {
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(DeletePolicy.CASCADE)
     @JoinColumn(name = "PIZZA_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Pizza pizza;
 
     @NotNull
@@ -26,20 +28,20 @@ public class OrderItem extends StandardEntity {
     @Min(1)
     private Integer quantity;
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 
     public Pizza getPizza() {
         return pizza;
     }
 
-    public void setPizza(Pizza pizza) {
-        this.pizza = pizza;
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Order getOrder() {

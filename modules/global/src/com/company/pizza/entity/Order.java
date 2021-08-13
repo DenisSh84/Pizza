@@ -1,6 +1,10 @@
 package com.company.pizza.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.cuba.core.entity.ReferenceToEntity;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -8,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "PIZZA_ORDER")
 @Entity(name = "pizza_Order")
@@ -26,35 +31,50 @@ public class Order extends StandardEntity {
     private Date createdDate;
 
     @NotNull
-    @Column(name = "STATUS", nullable = false, length = 50)
+    @Column(name = "STATUS", nullable = false)
     private String status;
 
     @NotNull
     @Column(name = "COST", nullable = false)
     private BigDecimal totalAmount;
 
-    @Column(name = "ORDER_ITEMS")
-    private String orderItems;
+    @OneToMany(mappedBy = "order")
+    @OnDelete(DeletePolicy.CASCADE)
+    @Composition
+    private List<OrderItem> orderItems;
 
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "DELIVER_ID")
-    private Delivery deliver;
+    @OneToOne(optional = false)
+    @AttributeOverrides({
+            @AttributeOverride(name = "entityId", column = @Column(name = "DELIVER_ENTITY_ID")),
+            @AttributeOverride(name = "stringEntityId", column = @Column(name = "DELIVER_STRING_ENTITY_ID")),
+            @AttributeOverride(name = "intEntityId", column = @Column(name = "DELIVER_INT_ENTITY_ID")),
+            @AttributeOverride(name = "longEntityId", column = @Column(name = "DELIVER_LONG_ENTITY_ID"))
+    })
+    private @Embedded
+    @NotNull ReferenceToEntity deliver;
 
-    public Delivery getDeliver() {
-        return deliver;
+    public void setStatus(Status status) {
+        this.status = status == null ? null : status.getId();
     }
 
-    public void setDeliver(Delivery deliver) {
+    public Status getStatus() {
+        return status == null ? null : Status.fromId(status);
+    }
+
+    public void setDeliver(ReferenceToEntity deliver) {
         this.deliver = deliver;
     }
 
-    public String getOrderItems() {
-        return orderItems;
+    public ReferenceToEntity getDeliver() {
+        return deliver;
     }
 
-    public void setOrderItems(String orderItems) {
+    public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
     public BigDecimal getTotalAmount() {
@@ -63,14 +83,6 @@ public class Order extends StandardEntity {
 
     public void setTotalAmount(BigDecimal cost) {
         this.totalAmount = cost;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getCreatedDate() {

@@ -10,7 +10,7 @@ create table PIZZA_PIZZA (
     DELETED_BY varchar(50),
     --
     NAME varchar(255) not null,
-    SIZE_ varchar(50) not null,
+    SIZE_ integer not null,
     CALORIES integer,
     PRICE integer not null,
     DESCRIPTION text,
@@ -104,6 +104,10 @@ create table PIZZA_ORDER_ITEM (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    ORDER_ID uuid not null,
+    PIZZA_ID uuid,
+    QUANTITY integer not null,
+    --
     primary key (ID)
 )^
 -- end PIZZA_ORDER_ITEM
@@ -118,12 +122,15 @@ create table PIZZA_ORDER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    DELIVER_ENTITY_ID uuid,
+    DELIVER_STRING_ENTITY_ID varchar(255),
+    DELIVER_INT_ENTITY_ID integer,
+    DELIVER_LONG_ENTITY_ID bigint,
+    --
     NUMBER_ integer not null,
     DATE_ date not null,
     STATUS varchar(50) not null,
     COST decimal(19, 2) not null,
-    ORDER_ITEMS varchar(255),
-    DELIVER_ID uuid not null,
     --
     primary key (ID)
 )^
