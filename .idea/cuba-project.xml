@@ -26,14 +26,14 @@
         <option name="artifactGroup" value="com.company.pizza" />
         <option name="artifactVersion" value="0.1" />
         <option name="artifactSnapshot" value="true" />
-        <option name="tomcatDir" value="D:\Projects\pizza/deploy/tomcat" />
+        <option name="tomcatDir" value="C:\JavaProjects\pizza/deploy/tomcat" />
         <option name="gradleVersion" value="5.6.4" />
-        <option name="gradlePluginJarPath" value="C:\Users\Denis\.gradle\caches\modules-2\files-2.1\com.haulmont.gradle\cuba-plugin\7.2.15\df2b6055e55f5f93f619605bd9fb540bd8f69e7c\cuba-plugin-7.2.15.jar" />
+        <option name="gradlePluginJarPath" value="C:\Users\asp-shda.LN\.gradle\caches\modules-2\files-2.1\com.haulmont.gradle\cuba-plugin\7.2.15\df2b6055e55f5f93f619605bd9fb540bd8f69e7c\cuba-plugin-7.2.15.jar" />
       </CubaModelState>
     </option>
     <option name="dbArtifacts">
       <map>
-        <entry key="com.haulmont.cuba" value="C:\Users\Denis\.gradle\caches\modules-2\files-2.1\com.haulmont.cuba\cuba-core\7.2.15\9a299e79c204522522cfdeee7c65c2b34a073d29\cuba-core-7.2.15-db.zip" />
+        <entry key="com.haulmont.cuba" value="C:\Users\asp-shda.LN\.gradle\caches\modules-2\files-2.1\com.haulmont.cuba\cuba-core\7.2.15\9a299e79c204522522cfdeee7c65c2b34a073d29\cuba-core-7.2.15-db.zip" />
       </map>
     </option>
     <option name="gradleFilesCRC" value="5715138487" />

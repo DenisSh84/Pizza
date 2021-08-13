@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
+    <view entity="pizza_Topping" name="topping-view-full" extends="_local">
+        <property name="ingredient" view="_minimal">
+            <property name="pizza" view="_minimal">
+                <property name="size"/>
+            </property>
+            <property name="toping" view="_minimal">
+                <property name="spicy"/>
+            </property>
+        </property>
+    </view>
+    <view entity="pizza_Pizza" name="pizza-view-full" extends="_local"/>
+    <view entity="pizza_Payment" name="payment-view-with-order" extends="_local">
+        <property name="order" view="_minimal">
+            <property name="number"/>
+            <property name="createdDate"/>
+        </property>
+    </view>
+    <view entity="pizza_OrderItem" name="orderItem-view" extends="_local">
+        <property name="order" view="_minimal">
+            <property name="number"/>
+            <property name="createdDate"/>
+        </property>
+        <property name="pizza" view="_minimal">
+            <property name="size"/>
+        </property>
+    </view>
+    <view entity="pizza_Order" name="order-view" extends="_local"/>
+    <view entity="pizza_Ingredient" name="ingredient-view" extends="_local">
+        <property name="pizza" view="_minimal">
+            <property name="size"/>
+        </property>
+        <property name="toping" view="_minimal">
+            <property name="spicy"/>
+        </property>
+    </view>
+    <view entity="pizza_Delivery" name="delivery-view" extends="_local">
+        <property name="courier" view="_minimal"/>
+        <property name="order" view="_minimal">
+            <property name="number"/>
+            <property name="createdDate"/>
+            <property name="totalAmount"/>
+        </property>
+    </view>
 </views>
