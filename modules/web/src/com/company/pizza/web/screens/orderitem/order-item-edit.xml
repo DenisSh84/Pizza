@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://orderItemEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.pizza.web.screens.orderitem">
+    <data>
+        <instance id="orderItemDc"
+                  class="com.company.pizza.entity.OrderItem">
+            <view extends="_local">
+                <property name="order" view="_minimal">
+                    <property name="number"/>
+                    <property name="createdDate"/>
+                    <property name="status"/>
+                </property>
+                <property name="pizza" view="_minimal">
+                    <property name="size"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="orderItemDc">
+            <column width="350px">
+                <pickerField id="orderField" property="order">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="pizzaField" property="pizza">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="quantityField" property="quantity"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -3,7 +3,9 @@ package com.company.pizza.entity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Table(name = "PIZZA_TOPPING")
@@ -18,18 +20,6 @@ public class Topping extends StandardEntity {
 
     @Column(name = "SPICY")
     private Boolean spicy;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "INGREDIENT_ID")
-    private Ingredient ingredient;
-
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
 
     public Boolean getSpicy() {
         return spicy;
